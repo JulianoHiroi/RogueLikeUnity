@@ -61,8 +61,15 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
             doubleJump = true;
         }
+        if(collision.gameObject.tag == "Spikes"){
+            Debug.Log("Morreu");
+            GameController.instance.GameOver();
+            Destroy(gameObject);
+        }
     }
     void OnCollisionExit2D(Collision2D collision ){
         isGrounded = false;
     }
 }
+
+
