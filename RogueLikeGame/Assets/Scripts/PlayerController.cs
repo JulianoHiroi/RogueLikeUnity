@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,12 +14,15 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
     private bool doubleJump;
+
+    public bool inPortal ;
     // Start is called before the first frame update
     
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        inPortal = false;
 
     }
 
@@ -25,8 +30,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         input_x = Input.GetAxis("Horizontal");
-        Move();
+        
+        
+        if(inPortal && Input.GetButtonDown("Jump")){
+            Debug.Log("Portal");
+            SceneManager.LoadScene("Level_2");
+        }
         Jump();
+        Move();
     }
 
     void Move(){
@@ -69,6 +80,18 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision ){
         isGrounded = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Portal"){
+            inPortal = true;
+            Debug.Log("Entrou");
+        }
+    }
+    void OnTriggerExit2D(Collider2D collider){
+        if(collider.gameObject.tag == "Portal"){
+            inPortal = false;
+        }
     }
 }
 

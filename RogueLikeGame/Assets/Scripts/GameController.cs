@@ -30,4 +30,8 @@ public class GameController : MonoBehaviour
         Debug.Log("Cliquei");
         SceneManager.LoadScene(levelName);
     }
+
+    public void NextLevel (string levelName){
+        SceneManager.LoadScene(levelName);
+    }
 }
