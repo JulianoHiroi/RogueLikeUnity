@@ -5,7 +5,7 @@ using UnityEngine;
 public class IEnemy : MonoBehaviour
 {
     // Start is called before the first frame update   
-    public float hero;
+
     void Start()
     {
 
