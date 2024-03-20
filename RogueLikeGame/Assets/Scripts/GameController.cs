@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
-    private static Hero hero  = new Hero(5, 0, 0);
+    private static Hero hero = new Hero(5, 0, 0);
 
-    private static Enemy enemy =new Enemy(1, 10 , 10);
+    private static Enemy enemy = new Enemy(5, 5, 2);
     private static GameController instance;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-    
+
     }
 
     // Update is called once per frame

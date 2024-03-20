@@ -31,25 +31,30 @@ public class Enemy
     }
     public float[] GetTargetDirection()
     {
-        if(target == null)
+        if (target == null)
         {
-            return null; 
-        }else {
-            float [] targetPosition = target.getPosition();
+            return null;
+        }
+        else
+        {
+            float[] targetPosition = target.getPosition();
             float x = targetPosition[0] - position[0];
             float y = targetPosition[1] - position[1];
 
-            if(Math.Abs(x) > Math.Abs(y))
+            if (Math.Abs(x) > Math.Abs(y))
             {
-                return new float[2]{x/Math.Abs(x), y/x};
-            }else if(Math.Abs(x) < Math.Abs(y)){
-                return new float[2]{x/y, y/Math.Abs(y)};
+                return new float[2] { x / Math.Abs(x), y / Math.Abs(x) };
             }
-            else {
-                return new float[2]{x/Math.Abs(x), y/Math.Abs(y)};
-            }    
+            else if (Math.Abs(x) < Math.Abs(y))
+            {
+                return new float[2] { x / Math.Abs(y), y / Math.Abs(y) };
+            }
+            else
+            {
+                return new float[2] { x / Math.Abs(x), y / Math.Abs(y) };
+            }
         }
-        
+
     }
 
     public float getSpeed()
