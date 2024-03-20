@@ -40,7 +40,10 @@ public class Enemy
             float[] targetPosition = target.getPosition();
             float x = targetPosition[0] - position[0];
             float y = targetPosition[1] - position[1];
-
+            if (Math.Abs(x) < 0.1 && Math.Abs(y) < 0.1)
+            {
+                return null;
+            }
             if (Math.Abs(x) > Math.Abs(y))
             {
                 return new float[2] { x / Math.Abs(x), y / Math.Abs(x) };

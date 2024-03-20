@@ -7,8 +7,10 @@ public class GameController : MonoBehaviour
     private static Hero hero = new Hero(5, 0, 0);
 
     private static Enemy enemy = new Enemy(5, 5, 2);
-    private static GameController instance;
+    public static GameController instance;
     // Start is called before the first frame update
+
+    public GameObject gameOver;
     void Start()
     {
         instance = this;
@@ -38,5 +40,10 @@ public class GameController : MonoBehaviour
     public static Enemy getEnemy()
     {
         return enemy;
+    }
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
     }
 }

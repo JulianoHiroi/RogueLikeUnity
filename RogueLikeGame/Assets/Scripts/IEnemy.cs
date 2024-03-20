@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class IEnemy : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class IEnemy : MonoBehaviour
     Enemy enemy;
     float[] direction;
     Vector3 moviment;
-
+    int i = 0;
+    public Canvas canvas;
     void Start()
     {
         moviment = new Vector3(0, 0, 0);
@@ -48,6 +50,16 @@ public class IEnemy : MonoBehaviour
             transform.position += movement * Time.deltaTime * enemy.getSpeed();
 
             enemy.setPositon(transform.position.x, transform.position.y);
+        }
+        else
+        {
+            if (i == 0)
+            {
+
+                Debug.Log("FOi pego");
+                GameController.instance.GameOver();
+            }
+
         }
     }
 
