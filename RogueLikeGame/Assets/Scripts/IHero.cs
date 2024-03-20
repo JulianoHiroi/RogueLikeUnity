@@ -7,7 +7,6 @@ using UnityEngine;
 public class IHero : MonoBehaviour
 {
     // Start is called before the first frame update
-
     SpriteRenderer sprite;
     Animator animator;
     float inputX;
@@ -22,7 +21,8 @@ public class IHero : MonoBehaviour
         animator = GetComponent<Animator>();
         inputX = 0;
         inputY = 0;
-        hero = new Hero(5, 0, 0);
+
+        hero = GameController.getHero();
         moviment = new Vector3(0, 0, 0);
         position = new Vector3(hero.getPosition()[0], hero.getPosition()[1], 0);
 
@@ -39,11 +39,6 @@ public class IHero : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
         moviment.Set(inputX, inputY, 0);
         Move();
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(hero.getPosition()[0]);
-            Debug.Log(hero.getPosition()[1]);
-        }
     }
 
     private void Move()

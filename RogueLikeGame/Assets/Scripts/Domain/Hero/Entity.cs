@@ -1,7 +1,4 @@
-
-using System;
-
-class Hero
+public class Hero
 {
   private float speed;
   private float[] position;
