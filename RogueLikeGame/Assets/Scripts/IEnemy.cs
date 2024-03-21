@@ -12,7 +12,7 @@ public class IEnemy : MonoBehaviour
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        enemy = GameController.getEnemy();
+        enemy = GameController.createEnemy();
         enemy.setTarget(GameController.getHero());
         float[] position = enemy.getPosition();
         transform.position = new Vector3(position[0], position[1], 0);
