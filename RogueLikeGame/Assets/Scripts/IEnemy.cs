@@ -9,12 +9,8 @@ public class IEnemy : MonoBehaviour
     SpriteRenderer sprite;
     Enemy enemy;
     float[] direction;
-    Vector3 moviment;
-    int i = 0;
-    public Canvas canvas;
     void Start()
     {
-        moviment = new Vector3(0, 0, 0);
         sprite = GetComponent<SpriteRenderer>();
         enemy = GameController.getEnemy();
         enemy.setTarget(GameController.getHero());
@@ -28,10 +24,7 @@ public class IEnemy : MonoBehaviour
     void Update()
     {
         Move();
-        if (Input.GetMouseButtonDown(0) == true)
-        {
-            print(direction[0] + " " + direction[1]);
-        }
+
     }
 
     void Move()
@@ -51,20 +44,11 @@ public class IEnemy : MonoBehaviour
 
             enemy.setPositon(transform.position.x, transform.position.y);
         }
-        else
-        {
-            if (i == 0)
-            {
-
-                Debug.Log("FOi pego");
-                GameController.instance.GameOver();
-            }
-
-        }
     }
 
     void GetDirection()
     {
         direction = enemy.GetTargetDirection();
+
     }
 }

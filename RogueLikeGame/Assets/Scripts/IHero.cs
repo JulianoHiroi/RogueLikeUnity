@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 
@@ -72,8 +73,10 @@ public class IHero : MonoBehaviour
             animator.SetBool("isWalkingYDown", false);
             animator.SetBool("isWalkingYUp", false);
         }
+        hero.Move(inputX, inputY, Time.deltaTime);
+        moviment.Set(inputX, inputY, 0);
+        float[] position = hero.getPosition();
+        transform.position += moviment * hero.getSpeed() * Time.deltaTime;
 
-        transform.position += moviment * Time.deltaTime * hero.getSpeed();
-        hero.setPositon(transform.position.x, transform.position.y);
     }
 }
