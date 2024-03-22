@@ -23763,6 +23763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ff1e00622ef1f4f8dbe4c750bee9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabToInstantiate: {fileID: 3817130459127986385, guid: 27c462e65cf1fce42bc036eda910ae82, type: 3}
   gameOver: {fileID: 1857275316}
 --- !u!4 &945062525
 Transform:

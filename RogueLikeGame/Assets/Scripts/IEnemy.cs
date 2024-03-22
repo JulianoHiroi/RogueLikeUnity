@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class IEnemy : MonoBehaviour
 {
     // Start is called before the first frame update   
     SpriteRenderer sprite;
+    string id;
     Enemy enemy;
     float[] direction;
+    Guid guid = Guid.NewGuid();
     void Start()
     {
+        id = guid.ToString();
         sprite = GetComponent<SpriteRenderer>();
-        enemy = GameController.createEnemy();
+        GameController.CreateEnemy(id);
+        enemy = GameController.enemies[id];
         enemy.setTarget(GameController.getHero());
         float[] position = enemy.getPosition();
         transform.position = new Vector3(position[0], position[1], 0);
