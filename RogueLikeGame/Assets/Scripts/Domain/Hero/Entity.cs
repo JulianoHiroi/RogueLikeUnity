@@ -29,4 +29,9 @@ public class Hero
     position[0] = posX;
     position[1] = posY;
   }
+  public void Move(float inputX, float inputY, float deltaTime)
+  {
+    position[0] += inputX * speed * deltaTime;
+    position[1] += inputY * speed * deltaTime;
+  }
 }

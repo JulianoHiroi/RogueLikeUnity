@@ -1,20 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class IEnemy : MonoBehaviour
 {
     // Start is called before the first frame update   
     SpriteRenderer sprite;
+    string id;
     Enemy enemy;
     float[] direction;
-    Vector3 moviment;
-
+    Guid guid = Guid.NewGuid();
     void Start()
     {
-        moviment = new Vector3(0, 0, 0);
+        id = guid.ToString();
         sprite = GetComponent<SpriteRenderer>();
-        enemy = GameController.getEnemy();
+        GameController.CreateEnemy(id);
+        enemy = GameController.enemies[id];
         enemy.setTarget(GameController.getHero());
         float[] position = enemy.getPosition();
         transform.position = new Vector3(position[0], position[1], 0);
@@ -26,10 +29,7 @@ public class IEnemy : MonoBehaviour
     void Update()
     {
         Move();
-        if (Input.GetMouseButtonDown(0) == true)
-        {
-            print(direction[0] + " " + direction[1]);
-        }
+
     }
 
     void Move()
@@ -54,5 +54,6 @@ public class IEnemy : MonoBehaviour
     void GetDirection()
     {
         direction = enemy.GetTargetDirection();
+
     }
 }
