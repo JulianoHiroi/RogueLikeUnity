@@ -40,6 +40,7 @@ public class IHero : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
         moviment.Set(inputX, inputY, 0);
         Move();
+
     }
 
     private void Move()

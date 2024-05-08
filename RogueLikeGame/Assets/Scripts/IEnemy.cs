@@ -16,7 +16,7 @@ public class IEnemy : MonoBehaviour
     {
         id = guid.ToString();
         sprite = GetComponent<SpriteRenderer>();
-        GameController.CreateEnemy(id);
+        GameController.getHero();
         enemy = GameController.enemies[id];
         enemy.setTarget(GameController.getHero());
         float[] position = enemy.getPosition();
