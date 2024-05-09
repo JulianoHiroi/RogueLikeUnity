@@ -1,11 +1,20 @@
+using System;
+
 public class Hero
 {
-  private float speed;
+  private string id;
+  private float moveSpeed;
+  private float attackSpeed;
   private float[] position;
+  private float life;
+  private float demage;
+  private int level;
+  private Item[] itens;
+
 
   public Hero(float speed, float posX, float posY)
   {
-    this.speed = speed;
+    this.moveSpeed = speed;
     position = new float[2];
     position[0] = posX;
     position[1] = posY;
@@ -13,11 +22,11 @@ public class Hero
 
   public float getSpeed()
   {
-    return speed;
+    return moveSpeed;
   }
   public void setSpeed(float speed)
   {
-    this.speed = speed;
+    this.moveSpeed = speed;
   }
 
   public float[] getPosition()
@@ -31,7 +40,14 @@ public class Hero
   }
   public void Move(float inputX, float inputY, float deltaTime)
   {
-    position[0] += inputX * speed * deltaTime;
-    position[1] += inputY * speed * deltaTime;
+    position[0] += inputX * moveSpeed * deltaTime;
+    position[1] += inputY * moveSpeed * deltaTime;
+  }
+  public void Atack(Enemy[] enemies)
+  {
+    foreach (Enemy enemy in enemies)
+    {
+      enemy.takeDemage(demage);
+    }
   }
 }

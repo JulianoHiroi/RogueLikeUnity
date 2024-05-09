@@ -1,14 +1,19 @@
 using System;
+using System.Diagnostics;
 
 public class Enemy
 {
     private Hero target;
     private float speed;
     private float[] position;
+    private float life;
+    private float demage;
+    private int level;
 
     public Enemy(float posX, float posY, int speed)
     {
         position = new float[2];
+        life = 100;
         position[0] = posX;
         position[1] = posY;
         target = null;
@@ -29,7 +34,7 @@ public class Enemy
         position[0] = posX;
         position[1] = posY;
     }
-    public float[] GetTargetDirection()
+    public float[] getTargetDirection()
     {
         if (target == null)
         {
@@ -63,5 +68,21 @@ public class Enemy
     public float getSpeed()
     {
         return speed;
+    }
+    public void takeDemage(float demage)
+    {
+        life -= demage;
+        if (life <= 0)
+        {
+            die();
+        }
+    }
+    public void die()
+    {
+
+    }
+    public float getLife()
+    {
+        return life;
     }
 }

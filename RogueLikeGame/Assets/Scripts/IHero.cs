@@ -12,7 +12,7 @@ public class IHero : MonoBehaviour
     Animator animator;
     float inputX;
     float inputY;
-
+    private Collider2D collider;
     Hero hero;
     Vector3 moviment;
     Vector3 position;
@@ -22,7 +22,7 @@ public class IHero : MonoBehaviour
         animator = GetComponent<Animator>();
         inputX = 0;
         inputY = 0;
-
+        collider = GetComponent<Collider2D>();
         hero = GameController.getHero();
         moviment = new Vector3(0, 0, 0);
         position = new Vector3(hero.getPosition()[0], hero.getPosition()[1], 0);
@@ -40,6 +40,11 @@ public class IHero : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
         moviment.Set(inputX, inputY, 0);
         Move();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Atack();
+        }
+
 
     }
 
@@ -76,8 +81,14 @@ public class IHero : MonoBehaviour
         }
         hero.Move(inputX, inputY, Time.deltaTime);
         moviment.Set(inputX, inputY, 0);
-        float[] position = hero.getPosition();
         transform.position += moviment * hero.getSpeed() * Time.deltaTime;
+    }
 
+
+    void Atack()
+    {
+        hero.Atack(MatchController.getEnemies());
+        IEnemy enemy = GetComponent<IEnemy>();
+        enemy.getAtacked();
     }
 }

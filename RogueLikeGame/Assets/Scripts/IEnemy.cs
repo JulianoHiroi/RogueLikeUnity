@@ -11,14 +11,16 @@ public class IEnemy : MonoBehaviour
     string id;
     Enemy enemy;
     float[] direction;
+    float life;
     Guid guid = Guid.NewGuid();
     void Start()
     {
         id = guid.ToString();
         sprite = GetComponent<SpriteRenderer>();
         GameController.getHero();
-        enemy = GameController.enemies[id];
+        enemy = MatchController.createEnemy();
         enemy.setTarget(GameController.getHero());
+        Debug.Log(enemy.getPosition());
         float[] position = enemy.getPosition();
         transform.position = new Vector3(position[0], position[1], 0);
         direction = null;
@@ -46,14 +48,19 @@ public class IEnemy : MonoBehaviour
             }
             Vector3 movement = new Vector3(direction[0], direction[1], 0);
             transform.position += movement * Time.deltaTime * enemy.getSpeed();
-
             enemy.setPositon(transform.position.x, transform.position.y);
         }
     }
 
     void GetDirection()
     {
-        direction = enemy.GetTargetDirection();
+        direction = enemy.getTargetDirection();
 
     }
+    public void getAtacked()
+    {
+        life = enemy.getLife();
+    }
+
+
 }
